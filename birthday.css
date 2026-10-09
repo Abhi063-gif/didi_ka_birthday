@@ -343,6 +343,10 @@ body{
   color:var(--ink);
   visibility:hidden;
 }
+/* hard cap so the text block never overlaps the centred tree */
+.wish > *{
+  max-width:clamp(220px, 38vw, 480px);
+}
 .wish.is-in{ visibility:visible; }
 .wish::before{
   content:""; position:absolute;
@@ -377,7 +381,7 @@ body{
 .wish__hero{
   font-family:"Great Vibes", cursive; font-weight:400;
   font-size:clamp(48px, 11vw, 100px);
-  line-height:.98; margin:-.02em 0 .06em;
+  line-height:1.05; margin:-.02em 0 .06em;
   background:linear-gradient(180deg, #e85a83 0%, #c41f52 50%, #9c0f42 100%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
   filter:
