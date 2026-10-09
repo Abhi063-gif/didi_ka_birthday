@@ -255,8 +255,8 @@ body{
 .camera{
   position:absolute; inset:0;
   display:flex; flex-direction:column; justify-content:center; align-items:center;
-  gap:clamp(4px,1.2vh,12px);
-  padding:0 6vw; text-align:center;
+  gap:clamp(6px,1.6vh,16px);
+  padding:0 8vw; text-align:center;
   will-change:transform;
 }
 .kEyebrow{
@@ -297,11 +297,11 @@ body{
   filter:drop-shadow(0 2px 8px rgba(255,180,90,.5));
 }
 .kSub{
-  margin-top:clamp(12px,2.4vh,26px);
+  margin-top:clamp(14px,2.8vh,30px);
   font-family:"Cormorant Garamond", Georgia, serif;
   font-weight:500; font-style:italic;
-  font-size:clamp(14px, 3.4vw, 24px);
-  letter-spacing:.05em;
+  font-size:clamp(15px, 3.6vw, 26px);
+  letter-spacing:.06em;
   color:#ffdfd2;
   opacity:0; transform:translateY(10px);
 }
@@ -331,20 +331,27 @@ body{
    ============================================================ */
 .wish{
   position:absolute;
-  left:5.5%; bottom:10%;
-  max-width:46%;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:flex-start;
+  padding:0 clamp(24px, 5.5vw, 72px) clamp(28px, 8vh, 80px);
+  max-width:100%;
   z-index:6;
   pointer-events:none;
   color:var(--ink);
-  /* hard gate: wish__hero keeps opacity:1 (its clip-path drives the write-on),
-     so without this its clipped sliver + drop-shadow would leak into Acts 1–3. */
   visibility:hidden;
 }
 .wish.is-in{ visibility:visible; }
 .wish::before{
-  content:""; position:absolute; inset:-18% -24% -24% -16%;
-  background:radial-gradient(84% 98% at 34% 52%, rgba(255,250,243,.94), rgba(255,250,243,.6) 48%, rgba(255,250,243,0) 80%);
+  content:""; position:absolute;
+  bottom:0; left:0;
+  width:clamp(300px, 55vw, 700px);
+  height:clamp(200px, 42vh, 500px);
+  background:radial-gradient(84% 98% at 14% 88%, rgba(255,250,243,.94), rgba(255,250,243,.6) 48%, rgba(255,250,243,0) 80%);
   z-index:-1; opacity:0; transition:opacity 1s ease;
+  pointer-events:none;
 }
 .wish.is-in::before{ opacity:1; }
 .wish__eyebrow{
@@ -369,19 +376,15 @@ body{
 }
 .wish__hero{
   font-family:"Great Vibes", cursive; font-weight:400;
-  font-size:clamp(40px, 9.6vw, 86px);
+  font-size:clamp(48px, 11vw, 100px);
   line-height:.98; margin:-.02em 0 .06em;
-  /* one consistent rose, top-lit — every letter reads the same (no per-glyph
-     colour shift, which is what made the old rose→gold version look messy).
-     Deep enough to hold up against the tree's bright bloom behind it. */
   background:linear-gradient(180deg, #e85a83 0%, #c41f52 50%, #9c0f42 100%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
-  /* a crisp cream edge for legibility over the tree + one soft drop */
   filter:
     drop-shadow(0 1px 1px rgba(255,252,248,.98))
     drop-shadow(0 2px 6px rgba(130,18,55,.45));
   clip-path:inset(0 100% -28% -10%);
-  transform-origin:8% 60%;             /* breathe from the start of the line */
+  transform-origin:8% 60%;
 }
 .wish__rule{
   display:block; width:clamp(46px, 13vw, 110px); height:2px;
